@@ -1,0 +1,85 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
+
+export default function TajwidWebApp() {
+  const [feedback, setFeedback] = useState("");
+
+  return (
+    <div className="p-6 space-y-6">
+      <h1 className="text-3xl font-bold text-center">Jom Kenal Tajwid!</h1>
+      <Tabs defaultValue="asas" className="w-full">
+        <TabsList className="grid grid-cols-4">
+          <TabsTrigger value="asas">Bahagian 1: Asas</TabsTrigger>
+          <TabsTrigger value="tajwid">Bahagian 2: Hukum Tajwid</TabsTrigger>
+          <TabsTrigger value="kuiz">Bahagian 3: Kuiz & Latihan</TabsTrigger>
+          <TabsTrigger value="maklum">Bahagian 4: Maklum Balas</TabsTrigger>
+        </TabsList>
+
+        {/* Bahagian 1 */}
+        <TabsContent value="asas">
+          <div className="grid gap-4">
+            <Card>
+              <CardContent className="p-4">
+                <h2 className="text-xl font-semibold">1. Kenal Huruf Hijaiyah</h2>
+                <p>Tekan huruf untuk dengar bunyi, susun huruf dalam urutan yang betul.</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="p-4">
+                <h2 className="text-xl font-semibold">2. Huruf Mad dan Tanda Mad</h2>
+                <p>Kenali huruf mad (ا، و، ي) dan situasi penggunaannya.</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="p-4">
+                <h2 className="text-xl font-semibold">3. Tanda-Tanda Baris</h2>
+                <p>Fathah, Kasrah, Dhammah, Sukun, dan Tanwin dengan contoh audio interaktif.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+
+        {/* Bahagian 2 */}
+        <TabsContent value="tajwid">
+          <div className="grid gap-4">
+            <Card><CardContent className="p-4"><h2 className="text-xl font-semibold">1. Mad & Hukum Mad Panjang</h2><p>Mad Asli dan hukum mad lain (4–6 harakat).</p></CardContent></Card>
+            <Card><CardContent className="p-4"><h2 className="text-xl font-semibold">2. Nun Sakinah & Tanwin</h2><p>Izhar, Idgham, Ikhfa’, dan Iqlab dengan contoh ayat pendek.</p></CardContent></Card>
+            <Card><CardContent className="p-4"><h2 className="text-xl font-semibold">3. Mim Sakinah</h2><p>Ikhfa’ Syafawi, Idgham Mimi, dan Izhar Syafawi dalam konteks bacaan harian.</p></CardContent></Card>
+            <Card><CardContent className="p-4"><h2 className="text-xl font-semibold">4. Qalqalah</h2><p>Teknik pantulan huruf-huruf Qalqalah (ق، ط، ب، ج، د).</p></CardContent></Card>
+            <Card><CardContent className="p-4"><h2 className="text-xl font-semibold">5. Alif Lam Qamariah & Syamsiah</h2><p>Bezakan bacaan lam dalam kalimah yang bermula dengan alif lam.</p></CardContent></Card>
+          </div>
+        </TabsContent>
+
+        {/* Bahagian 3 */}
+        <TabsContent value="kuiz">
+          <Card>
+            <CardContent className="p-4">
+              <h2 className="text-xl font-semibold">Kuiz & Lembaran Kerja</h2>
+              <p>Sertai kuiz interaktif atau muat turun latihan PDF untuk dicetak. Gunakan Wordwall, Quizizz, atau Google Form.</p>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Bahagian 4 */}
+        <TabsContent value="maklum">
+          <Card>
+            <CardContent className="p-4 space-y-4">
+              <h2 className="text-xl font-semibold">Maklum Balas Pengguna</h2>
+              <p>Beri cadangan atau ulasan anda tentang laman ini:</p>
+              <Textarea
+                placeholder="Tulis maklum balas anda di sini..."
+                value={feedback}
+                onChange={(e) => setFeedback(e.target.value)}
+              />
+              <Button onClick={() => alert("Terima kasih atas maklum balas anda!")}>Hantar</Button>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
+}
